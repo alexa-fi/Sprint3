@@ -1,0 +1,3 @@
+# Project exclude paths
+/venv/
+/tests/.pytest_cache/
