@@ -1,8 +1,12 @@
+from lib2to3.pgen2 import driver
+
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from locators import HomePageLocators
 from locators import AuthorizationLocators
 from locators import RegistrationLocators
+from src import data
+
 
 class TestEnters:
     def test_enter_home_page_button_true(self, chrome_browser):
@@ -10,8 +14,8 @@ class TestEnters:
         WebDriverWait(chrome_browser, 10).until(EC.visibility_of_element_located(
             AuthorizationLocators.button_text_registration
         ))
-        chrome_browser.find_element(*AuthorizationLocators.email_authorization).send_keys('5957099@gmail.com')
-        chrome_browser.find_element(*AuthorizationLocators.password_authorization).send_keys('8j56t9')
+        data.set_default_email(chrome_browser)
+        data.set_default_password(chrome_browser)
         chrome_browser.find_element(*AuthorizationLocators.button_enter).click()
         login_button = WebDriverWait(chrome_browser, 10).until(EC.visibility_of_element_located(
             HomePageLocators.place_order_button
@@ -20,8 +24,8 @@ class TestEnters:
 
     def test_enter_personal_account_true(self, chrome_browser):
         chrome_browser.find_element(*HomePageLocators.personal_account_button_text_header).click()
-        chrome_browser.find_element(*AuthorizationLocators.email_authorization).send_keys('5957099@gmail.com')
-        chrome_browser.find_element(*AuthorizationLocators.password_authorization).send_keys('8j56t9')
+        data.set_default_email(chrome_browser)
+        data.set_default_password(chrome_browser)
         chrome_browser.find_element(*AuthorizationLocators.button_enter).click()
         login_button = WebDriverWait(chrome_browser, 10).until(EC.visibility_of_element_located(
             HomePageLocators.place_order_button
@@ -32,8 +36,8 @@ class TestEnters:
         chrome_browser.find_element(*HomePageLocators.login_button).click()
         chrome_browser.find_element(*AuthorizationLocators.button_text_registration).click()
         chrome_browser.find_element(*RegistrationLocators.button_text_enter).click()
-        chrome_browser.find_element(*AuthorizationLocators.email_authorization).send_keys('5957099@gmail.com')
-        chrome_browser.find_element(*AuthorizationLocators.password_authorization).send_keys('8j56t9')
+        data.set_default_email(chrome_browser)
+        data.set_default_password(chrome_browser)
         chrome_browser.find_element(*AuthorizationLocators.button_enter).click()
         login_button = WebDriverWait(chrome_browser, 10).until(EC.visibility_of_element_located(
             HomePageLocators.place_order_button
@@ -44,8 +48,8 @@ class TestEnters:
         chrome_browser.find_element(*HomePageLocators.login_button).click()
         chrome_browser.find_element(*AuthorizationLocators.button_text_forgot_password).click()
         chrome_browser.find_element(*RegistrationLocators.button_text_enter).click()
-        chrome_browser.find_element(*AuthorizationLocators.email_authorization).send_keys('5957099@gmail.com')
-        chrome_browser.find_element(*AuthorizationLocators.password_authorization).send_keys('8j56t9')
+        data.set_default_email(chrome_browser)
+        data.set_default_password(chrome_browser)
         chrome_browser.find_element(*AuthorizationLocators.button_enter).click()
         login_button = WebDriverWait(chrome_browser, 10).until(EC.visibility_of_element_located(
             HomePageLocators.place_order_button
