@@ -13,8 +13,7 @@ class HomePageLocators:
     bulki_button = By.XPATH, '//span[contains(text(), "Булки")]'  # Кнопка Булки
     bulki_second = (By.XPATH, './/p[contains(text(), "Краторная булка N-200i")]')  # Вторая булка в разделе булок
     filling_button = By.XPATH, '//span[contains(text(), "Начинки")]'  # Кнопка начинки
-    filling_second_ingredient = (By.CSS_SELECTOR,
-                                 "div.constructor-element__title:contains('Мясо бессмертных моллюсков Protostomia')")  # Вторая начинка в разделе начинок
+    filling_second_ingredient = (By.XPATH, './/p[contains(text(), "Мясо бессмертных моллюсков Protostomia")]') # Вторая начинка в разделе начинок
 
 
 class AuthorizationLocators:

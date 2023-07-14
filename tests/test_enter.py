@@ -1,5 +1,3 @@
-from lib2to3.pgen2 import driver
-
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from locators import HomePageLocators

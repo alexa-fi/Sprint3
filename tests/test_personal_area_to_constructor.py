@@ -9,16 +9,11 @@ class TestPersonalAreaToConstructor:
         sauce = WebDriverWait(chrome_browser, 10).until(EC.visibility_of_element_located(HomePageLocators.sauce_third))
         assert sauce.text == 'Соус традиционный галактический', 'Соус не найден'
 
-    def test_transition_filling_true(self, chrome_browser):
-       # chrome_browser.find_element(*HomePageLocators.personal_account_button_text_header).click()
-       #WebDriverWait(chrome_browser, 20).until(EC.visibility_of_element_located(
-        #    HomePageLocators.place_order_button
-       # ))
+    def test_transition_to_filling(self, chrome_browser):
         chrome_browser.find_element(*HomePageLocators.filling_button).click()
-        filling = WebDriverWait(chrome_browser, 20).until(EC.visibility_of_element_located(
-            HomePageLocators.filling_second_ingredient
-        ))
-        assert filling.text == "Мясо бессмертных моллюсков Protostomia", 'Начинка не найдена'
+        filling = WebDriverWait(chrome_browser, 10).until(
+            EC.visibility_of_element_located(HomePageLocators.filling_second_ingredient))
+        assert filling.text == 'Мясо бессмертных моллюсков Protostomia', 'Начинка не найдена'
 
     def test_transition_bulki_true(self, chrome_browser):
         chrome_browser.find_element(*HomePageLocators.sauces_button).click()
