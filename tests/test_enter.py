@@ -4,6 +4,8 @@ from locators import HomePageLocators
 from locators import AuthorizationLocators
 from locators import RegistrationLocators
 from src import data
+from src.data import set_default_email
+from src.data import set_default_password
 
 
 class TestEnters:
@@ -12,8 +14,8 @@ class TestEnters:
         WebDriverWait(chrome_browser, 10).until(EC.visibility_of_element_located(
             AuthorizationLocators.button_text_registration
         ))
-        data.set_default_email(chrome_browser)
-        data.set_default_password(chrome_browser)
+        set_default_email(chrome_browser)
+        set_default_password(chrome_browser)
         chrome_browser.find_element(*AuthorizationLocators.button_enter).click()
         login_button = WebDriverWait(chrome_browser, 10).until(EC.visibility_of_element_located(
             HomePageLocators.place_order_button
@@ -34,8 +36,8 @@ class TestEnters:
         chrome_browser.find_element(*HomePageLocators.login_button).click()
         chrome_browser.find_element(*AuthorizationLocators.button_text_registration).click()
         chrome_browser.find_element(*RegistrationLocators.button_text_enter).click()
-        data.set_default_email(chrome_browser)
-        data.set_default_password(chrome_browser)
+        set_default_email(chrome_browser)
+        set_default_password(chrome_browser)
         chrome_browser.find_element(*AuthorizationLocators.button_enter).click()
         login_button = WebDriverWait(chrome_browser, 10).until(EC.visibility_of_element_located(
             HomePageLocators.place_order_button
@@ -46,8 +48,8 @@ class TestEnters:
         chrome_browser.find_element(*HomePageLocators.login_button).click()
         chrome_browser.find_element(*AuthorizationLocators.button_text_forgot_password).click()
         chrome_browser.find_element(*RegistrationLocators.button_text_enter).click()
-        data.set_default_email(chrome_browser)
-        data.set_default_password(chrome_browser)
+        set_default_email(chrome_browser)
+        set_default_password(chrome_browser)
         chrome_browser.find_element(*AuthorizationLocators.button_enter).click()
         login_button = WebDriverWait(chrome_browser, 10).until(EC.visibility_of_element_located(
             HomePageLocators.place_order_button

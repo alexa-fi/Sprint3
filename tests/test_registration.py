@@ -6,6 +6,8 @@ from tests.locators import RegistrationLocators
 from src.helpers import generate_email
 from src import data
 from src.data import get_name
+from src.data import set_default_password
+from src.data import set_small_password
 
 email = generate_email()
 name = get_name()
@@ -19,12 +21,18 @@ class TestRegistration:
             EC.visibility_of_element_located(AuthorizationLocators.button_text_registration)).click()
         chrome_browser.find_element(*RegistrationLocators.name_registration).send_keys(name)
         chrome_browser.find_element(*RegistrationLocators.email_registration).send_keys(email)
-        data.set_default_password(chrome_browser)
+        set_default_password(chrome_browser)
         chrome_browser.find_element(*RegistrationLocators.button_registration).click()
         WebDriverWait(chrome_browser, 10).until(
             EC.visibility_of_element_located(AuthorizationLocators.button_text_registration))
-        url = chrome_browser.current_url
-        assert url == 'https://stellarburgers.nomoreparties.site/login'
+        chrome_browser.find_element(*AuthorizationLocators.email_authorization).send_keys(email)
+        set_default_password(chrome_browser)
+        chrome_browser.find_element(*AuthorizationLocators.button_enter).click()
+        login_button = WebDriverWait(chrome_browser, 10).until(EC.visibility_of_element_located(
+            HomePageLocators.place_order_button
+        ))
+        check = login_button.text
+        assert check == "Оформить заказ"
 
     def test_incorrect_password_error(self, chrome_browser):
         chrome_browser.find_element(*HomePageLocators.login_button).click()
@@ -32,7 +40,7 @@ class TestRegistration:
             EC.visibility_of_element_located(AuthorizationLocators.button_text_registration)).click()
         chrome_browser.find_element(*RegistrationLocators.name_registration).send_keys(name)
         chrome_browser.find_element(*RegistrationLocators.email_registration).send_keys(email)
-        data.set_small_password(chrome_browser)
+        set_small_password(chrome_browser)
         chrome_browser.find_element(*RegistrationLocators.button_registration).click()
         error_password = WebDriverWait(chrome_browser, 10).until(EC.visibility_of_element_located(
             RegistrationLocators.wrong_password_text))

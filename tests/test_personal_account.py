@@ -4,13 +4,15 @@ from locators import HomePageLocators
 from locators import AuthorizationLocators
 from locators import PersonalAccountLocators
 from src import data
+from src.data import set_default_email
+from src.data import set_default_password
 
 
 class TestPersonalAccount:
     def test_go_to_personal_account_true(self, chrome_browser):
         chrome_browser.find_element(*HomePageLocators.personal_account_button_text_header).click()
-        data.set_default_email(chrome_browser)
-        data.set_default_password(chrome_browser)
+        set_default_email(chrome_browser)
+        set_default_password(chrome_browser)
         chrome_browser.find_element(*AuthorizationLocators.button_enter).click()
         WebDriverWait(chrome_browser, 10).until(EC.visibility_of_element_located(
             HomePageLocators.place_order_button
@@ -23,8 +25,8 @@ class TestPersonalAccount:
 
     def test_logout_from_personal_account_true(self, chrome_browser):
         chrome_browser.find_element(*HomePageLocators.personal_account_button_text_header).click()
-        data.set_default_email(chrome_browser)
-        data.set_default_password(chrome_browser)
+        set_default_email(chrome_browser)
+        set_default_password(chrome_browser)
         chrome_browser.find_element(*AuthorizationLocators.button_enter).click()
         WebDriverWait(chrome_browser, 10).until(EC.visibility_of_element_located(
             HomePageLocators.place_order_button
