@@ -3,18 +3,15 @@ from selenium.webdriver.common.by import By
 
 class HomePageLocators:
     login_button = By.XPATH, '//*[contains(text(), "Войти в аккаунт")]'  # Кнопка войти в аккаунт
-    place_order_button = (By.XPATH, './/button[(text() = "Оформить заказ")]')  # Кнопка оформить заказ
+    place_order_button = By.XPATH, '//*[contains(text(), "Оформить заказ")]'  # Кнопка оформить заказ
     personal_account_button_text_header = (By.XPATH, './/nav/a/p')  # Кнопка личный кабинет в хэдере
-    collect_burger_text = (
-        By.XPATH, "//button[contains(text(), 'Соберите бургер')]")  # Надпись Соберите бургер в конструкторе
+    collect_burger_text = (By.XPATH, "//button[contains(text(), 'Соберите бургер')]")  # Надпись Соберите бургер в конструкторе
     sauces_button = By.XPATH, '//span[contains(text(), "Соусы")]'  # Кнопка соусы
-    sauce_third = (
-        By.XPATH, './/p[contains(text(), "Соус традиционный галактический")]')  # Третий соус в разделе соусов
+    sauce_third = (By.XPATH, './/p[contains(text(), "Соус традиционный галактический")]')  # Третий соус в разделе соусов
     bulki_button = By.XPATH, '//span[contains(text(), "Булки")]'  # Кнопка Булки
     bulki_second = (By.XPATH, './/p[contains(text(), "Краторная булка N-200i")]')  # Вторая булка в разделе булок
     filling_button = By.XPATH, '//span[contains(text(), "Начинки")]'  # Кнопка начинки
-    filling_second_ingredient = (
-    By.XPATH, './/p[contains(text(), "Мясо бессмертных моллюсков Protostomia")]')  # Вторая начинка в разделе начинок
+    filling_second_ingredient = (By.XPATH, './/p[contains(text(), "Мясо бессмертных моллюсков Protostomia")]')  # Вторая начинка в разделе начинок
 
 
 class AuthorizationLocators:
